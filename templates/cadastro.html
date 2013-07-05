@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+  </head>
+  <body>
+    <div class="main-info">
+        Parabéns, você está cadastrado! <br/>
+        Seu número de comerciante super-simples é <span class="nr_comerciante">{{ nr_comerciante }}</span>
+        <div class="cadastro">
+            <span id=nome>{{ nome }}</span>
+            <span id=cnpj>CNPJ: {{ cnpj }}</span>
+            <span id=nr_comerciante>Comerciante nº {{ nr_comerciante }}</span>
+        </div>
+    </div>
+  </body>
+</html>
+{% endautoescape %}

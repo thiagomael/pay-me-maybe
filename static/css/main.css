@@ -1,0 +1,12 @@
+form input {
+    display: block;
+}
+
+.cadastro span {
+    display: block;
+}
+
+.nr_comerciante {
+    color: blue;
+    font-size: 1.4em;
+}

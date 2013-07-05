@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+  </head>
+  <body>
+    <div class="main-info">
+        Ok, vamos ao cadastro, então.
+        <form action="/cadastro" method="post">
+            <input type="text" name="nome" placeholder="Nome"/>
+            <input type="text" name="cnpj" placeholder="CNPJ"/>
+            <input type="submit" value="Salvar"/>
+        </form>
+    </div>
+  </body>
+</html>
+{% endautoescape %}
