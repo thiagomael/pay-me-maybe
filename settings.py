@@ -5,12 +5,15 @@ import webapp2
 import jinja2
 
 import pages
+import services
 
 
 ROUTES = [
     ('/', pages.Inicio),
     ('/cadastro', pages.Cadastro),
     ('/form_cadastro', pages.FormCadastro),
+    ('/pagamentocartao-1.0.0/wsdl', services.Wsdl),
+    ('/pagamentocartao-1.0.0/PagamentoCartaoService', services.PagamentoCartaoService),
 ]
 
 TEMPLATES_DIR = os.path.join(os.path.dirname(__file__),

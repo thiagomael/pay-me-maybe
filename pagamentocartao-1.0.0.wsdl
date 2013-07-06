@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="PagamentoCartao" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+xmlns:schema="http://pay-me-maybe.appspot.com/pagamentocartao-1.0.0" 
+xmlns:tns="http://pay-me-maybe.appspot.com/pagamentocartao-1.0.0" 
+targetNamespace="http://pay-me-maybe.appspot.com/pagamentocartao-1.0.0">
+
+	<wsdl:types>
+		<xsd:schema  
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+		xmlns:msg="http://pay-me-maybe.appspot.com/pagamentocartao-1.0.0"
+		xmlns:tns="http://pay-me-maybe.appspot.com/pagamentocartao-1.0.0"
+		targetNamespace="http://pay-me-maybe.appspot.com/pagamentocartao-1.0.0" 
+                             elementFormDefault="qualified">
+
+			<xsd:complexType name="cartao">
+				<xsd:sequence>
+				        <xsd:element name="numero" type="xsd:string"/>
+				        <xsd:element name="nome" type="xsd:string"/>
+				        <xsd:element name="data_validade" type="xsd:string"/>
+				        <xsd:element name="cod_seguranca" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			
+
+			<xsd:element name="requestAutorizar" type="msg:cartao"/>
+
+			<xsd:element name="responseAutorizar" type="xsd:string"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="requestAutorizar">
+		<wsdl:part element="schema:requestAutorizar" name="requestAutorizar"/>
+	</wsdl:message>
+
+	<wsdl:message name="responseAutorizar">
+		<wsdl:part element="schema:responseAutorizar" name="responseAutorizar"/>
+	</wsdl:message>
+
+	<wsdl:portType name="PagamentoCartaoPortType">
+		<wsdl:operation name="autorizar">
+			<wsdl:input  message="tns:requestAutorizar"/>
+			<wsdl:output message="tns:responseAutorizar"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="PagamentoCartaoBinding" type="tns:PagamentoCartaoPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="autorizar">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="PagamentoCartao">
+		<wsdl:port binding="tns:PagamentoCartaoBinding" name="PagamentoCartaoEndPoint">
+			<soap:address location="http://pay-me-maybe.appspot.com/pagamentocartao-1.0.0/PagamentoCartaoService"/>
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>
