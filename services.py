@@ -4,10 +4,11 @@ from pysimplesoap.server import SoapDispatcher
 from random import random
 
 
-def autorizar(numero,
-              nome,
-              data_validade,
-              cod_seguranca):
+def autorizar(nr_comerciante, cartao):
+    numero = cartao['numero']
+    nome = cartao['nome']
+    data_validade = cartao['data_validade']
+    cod_seguranca = cartao['cod_seguranca']
     if random() < 0.7:
         return "OK"
     else:
@@ -28,10 +29,13 @@ soap_dispatcher.register_function(
     autorizar,
     returns={"responseAutorizar": str},
     args={
-        "numero": str,
-        "nome": str,
-        "data_validade": str,
-        "cod_seguranca": str
+        "nr_comerciante": str,
+        "cartao": {
+            "numero": str,
+            "nome": str,
+            "data_validade": str,
+            "cod_seguranca": str
+        }
     }
 )
 

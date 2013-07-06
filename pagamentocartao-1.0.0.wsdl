@@ -23,9 +23,15 @@ targetNamespace="http://pay-me-maybe.appspot.com/pagamentocartao-1.0.0">
 				        <xsd:element name="cod_seguranca" type="xsd:string"/>
 				</xsd:sequence>
 			</xsd:complexType>
+			<xsd:complexType name="pagamento">
+				<xsd:all>
+				        <xsd:element name="cartao" type="msg:cartao"/>
+				        <xsd:element name="nr_comerciante" type="xsd:string"/>
+				</xsd:all>
+			</xsd:complexType>
 			
 
-			<xsd:element name="requestAutorizar" type="msg:cartao"/>
+			<xsd:element name="requestAutorizar" type="msg:pagamento"/>
 
 			<xsd:element name="responseAutorizar" type="xsd:string"/>
 		</xsd:schema>
