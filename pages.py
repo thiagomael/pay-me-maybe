@@ -2,7 +2,7 @@
 from google.appengine.ext import ndb
 import webapp2
 
-from models import Comerciante
+from models import Comerciante, Pagamento
 from template_utils import render_template
 
 
@@ -27,3 +27,14 @@ class Cadastro(webapp2.RequestHandler):
             'nr_comerciante': comerciante.numero
         }
         return render_template('cadastro.html',params)
+
+
+class Pagamentos(webapp2.RequestHandler):
+    def get(self):
+        nr_comerciante = self.request.get('nr_comerciante')
+        comerciante = Comerciante.get_by_id(nr_comerciante)
+        params = {
+            'nr_comerciante': nr_comerciante,
+            'pagamentos': Pagamento.get_by_comerciante(nr_comerciante)
+        }
+        return render_template('pagamentos.html', params)

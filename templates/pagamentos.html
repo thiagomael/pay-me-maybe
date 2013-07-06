@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+  </head>
+  <body>
+    <div class="main-info">
+        <table>
+            <caption>
+                Pagamentos para o comerciante <span class="nr_comerciante">{{ nr_comerciante }}</span>
+            </caption>
+            <thead>
+                <tr>
+                    <td>Quantia</td>
+                    <td>Cartão</td>
+                    <td>Data/Hora</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for pagamento in pagamentos %}
+                <tr class="pagamento">
+                    <td id=quantia>{{ pagamento.quantia }}</td>
+                    <td id=cartao>{{ pagamento.cartao.numero }}</td>
+                    <td id=hora>{{ pagamento.hora }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  </body>
+</html>
+{% endautoescape %}

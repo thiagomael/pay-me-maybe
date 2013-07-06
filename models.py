@@ -40,3 +40,8 @@ class Pagamento(ndb.Model):
         pagamento.quantia = quantia
         pagamento.cartao = cartao
         pagamento.put()
+
+    @classmethod
+    def get_by_comerciante(cls, nr_comerciante):
+        query = Pagamento.query(ancestor=ndb.Key(Comerciante, nr_comerciante))
+        return query.iter()

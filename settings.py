@@ -12,6 +12,7 @@ ROUTES = [
     ('/', pages.Inicio),
     ('/cadastro', pages.Cadastro),
     ('/form_cadastro', pages.FormCadastro),
+    ('/pagamentos', pages.Pagamentos),
     ('/pagamentocartao-1.0.0/wsdl', services.Wsdl),
     ('/pagamentocartao-1.0.0/PagamentoCartaoService', services.PagamentoCartaoService),
 ]
