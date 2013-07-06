@@ -27,6 +27,7 @@ targetNamespace="http://pay-me-maybe.appspot.com/pagamentocartao-1.0.0">
 				<xsd:all>
 				        <xsd:element name="cartao" type="msg:cartao"/>
 				        <xsd:element name="nr_comerciante" type="xsd:string"/>
+				        <xsd:element name="quantia" type="xsd:string"/>
 				</xsd:all>
 			</xsd:complexType>
 			

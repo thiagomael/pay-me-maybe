@@ -30,6 +30,7 @@ soap_dispatcher.register_function(
     returns={"responseAutorizar": str},
     args={
         "nr_comerciante": str,
+        "quantia": str,
         "cartao": {
             "numero": str,
             "nome": str,
