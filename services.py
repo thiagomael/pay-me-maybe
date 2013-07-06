@@ -1,15 +1,17 @@
 # coding=utf-8
-import webapp2
+from google.appengine.ext import ndb
 from pysimplesoap.server import SoapDispatcher
 from random import random
+import webapp2
+
+from models import Comerciante, Pagamento
 
 
-def autorizar(nr_comerciante, cartao):
-    numero = cartao['numero']
-    nome = cartao['nome']
-    data_validade = cartao['data_validade']
-    cod_seguranca = cartao['cod_seguranca']
+def autorizar(nr_comerciante, cartao, quantia):
+    if not Comerciante.exists(nr_comerciante):
+        raise Exception("Comerciante inexistente: %s" % nr_comerciante)
     if random() < 0.7:
+        Pagamento.efetuar(nr_comerciante, cartao, quantia)
         return "OK"
     else:
         return "NOT OK"

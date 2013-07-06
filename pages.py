@@ -1,7 +1,8 @@
 # coding=utf-8
-import uuid
+from google.appengine.ext import ndb
 import webapp2
 
+from models import Comerciante
 from template_utils import render_template
 
 
@@ -19,10 +20,10 @@ class Cadastro(webapp2.RequestHandler):
     def post(self):
         nome = self.request.get('nome')
         cnpj = self.request.get('cnpj')
-        nr_comerciante = uuid.uuid4().hex
+        comerciante = Comerciante.cadastrar(nome, cnpj)
         params = {
             'nome': nome,
             'cnpj': cnpj,
-            'nr_comerciante': nr_comerciante
+            'nr_comerciante': comerciante.numero
         }
         return render_template('cadastro.html',params)
