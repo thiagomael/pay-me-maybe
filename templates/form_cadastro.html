@@ -1,18 +1,27 @@
-<!DOCTYPE html>
-{% autoescape true %}
-<html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
-  </head>
-  <body>
-    <div class="main-info">
-        Ok, vamos ao cadastro, então.
-        <form action="/cadastro" method="post">
-            <input type="text" name="nome" placeholder="Nome"/>
-            <input type="text" name="cnpj" placeholder="CNPJ"/>
-            <input type="submit" value="Salvar"/>
-        </form>
+{% extends "base.html" %}
+{% block content %}
+    <div class="page-header">
+        <h1>Ao cadastro!</h1>
     </div>
-  </body>
-</html>
-{% endautoescape %}
+    <form class="form-horizontal" action="/cadastro" method="post">
+        <fieldset>
+            <div class="control-group">
+                <label class="control-label" for="nome">Nome</label>
+                <div class="controls">
+                    <input id="nome" type="text" name="nome" placeholder="Nome"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="cnpj">CNPJ</label>
+                <div class="controls">
+                <input id="cnpj" type="text" name="cnpj" placeholder="CNPJ"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <input class="btn btn-primary" type="submit" value="Salvar"/>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

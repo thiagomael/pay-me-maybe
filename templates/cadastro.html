@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-{% autoescape true %}
-<html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
-  </head>
-  <body>
-    <div class="main-info">
-        Parabéns, você está cadastrado! <br/>
-        Seu número de comerciante super-simples é <span class="nr_comerciante">{{ nr_comerciante }}</span>
-        <div class="cadastro">
-            <span id=nome>{{ nome }}</span>
-            <span id=cnpj>CNPJ: {{ cnpj }}</span>
-            <span id=nr_comerciante>Comerciante nº {{ nr_comerciante }}</span>
-        </div>
+{% extends "base.html" %}
+{% block content %}
+<div style="text-align: center">
+    <h1>Bem-vindo!</h1>
+    <p class="lead">
+        Seu número de comerciante super-simples é <h2 class="nr_comerciante">{{ nr_comerciante }}</h2>
+    </p>
+    <div class="hero-unit info-cadastro">
+        Nome: {{ nome }}
+        <br/>
+        CNPJ: {{ cnpj }}
+        <br/>
+        Comerciante nº <span class="nr_comerciante">{{ nr_comerciante }}</span>
+        <br/>
     </div>
-  </body>
-</html>
-{% endautoescape %}
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"/>
+    <title>Pay me, maybe?</title>
+  </head>
+  <body>
+     <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <span class="brand">Pay me, maybe?</span>
+                <form class="navbar-form pull-right" action="/pagamentos" method="get">
+                    <div class="input-append">
+                        <input type="text" name="nr_comerciante" placeholder="Número de Comerciante" />
+                        <input class="btn btn-info" type="submit" value="Meus Pagamentos"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="navbar navbar-fixed-bottom" style="text-align: center">
+        <hr/>
+        <p>© Copyleft ACMEsoft 2013</p>
+    </div>
+  </body>
+</html>
+{% endautoescape %}

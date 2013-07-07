@@ -1,9 +1,5 @@
-form input {
-    display: block;
-}
-
-.cadastro span {
-    display: block;
+.info-cadastro  {
+    text-align: left;
 }
 
 .nr_comerciante {
