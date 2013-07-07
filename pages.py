@@ -33,8 +33,24 @@ class Pagamentos(webapp2.RequestHandler):
     def get(self):
         nr_comerciante = self.request.get('nr_comerciante')
         comerciante = Comerciante.get_by_id(nr_comerciante)
+        cursor_anterior = self.request.get('anterior')
+        cursor_proximo = self.request.get('proximo')
+        ordem = -1 if cursor_anterior else 1
+        result = Pagamento.get_by_comerciante(nr_comerciante,
+                                              ordem,
+                                              cursor_anterior or cursor_proximo)
+        if ordem < 0:
+            pagamentos, proximo, anterior, tem_mais = result 
+            if not tem_mais:
+                anterior = ''
+                tem_mais = True
+        else:
+            pagamentos, anterior, proximo, tem_mais = result 
         params = {
             'nr_comerciante': nr_comerciante,
-            'pagamentos': Pagamento.get_by_comerciante(nr_comerciante)
+            'pagamentos': pagamentos,
+            'proximo': proximo,
+            'anterior': anterior,
+            'tem_mais': tem_mais,
         }
         return render_template('pagamentos.html', params)

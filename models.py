@@ -42,6 +42,14 @@ class Pagamento(ndb.Model):
         pagamento.put()
 
     @classmethod
-    def get_by_comerciante(cls, nr_comerciante):
+    def get_by_comerciante(cls, nr_comerciante, ordem, start_cursor=None):
         query = Pagamento.query(ancestor=ndb.Key(Comerciante, nr_comerciante))
-        return query.iter()
+        criterio = -Pagamento.hora
+        query = query.order(criterio if ordem > 0 else criterio.reversed())
+        cursor = ndb.Cursor(urlsafe=start_cursor)
+        pagamentos, proximo, tem_mais = query.fetch_page(10, start_cursor=cursor)
+        anterior = cursor.reversed()
+        return (pagamentos if ordem > 0 else reversed(pagamentos),
+                anterior.urlsafe() if anterior else '',
+                proximo.urlsafe() if proximo else '',
+                tem_mais)

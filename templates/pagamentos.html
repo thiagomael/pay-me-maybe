@@ -24,4 +24,12 @@
         {% endfor %}
         </tbody>
     </table>
+    <ul class="pager">
+      {% if anterior %}
+        <li><a href="?nr_comerciante={{nr_comerciante}}&anterior={{anterior}}">Anterior</a></li>
+      {% endif %}
+      {% if tem_mais %}
+        <li><a href="?nr_comerciante={{nr_comerciante}}&proximo={{proximo}}">Próximo</a></li>
+      {% endif %}
+    </ul>
 {% endblock %}

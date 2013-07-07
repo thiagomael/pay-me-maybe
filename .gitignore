@@ -1,5 +1,8 @@
 *.py[cod]
 
+# Index do Datastore
+index.yaml
+
 # Vim backup files
 *.swp
 
